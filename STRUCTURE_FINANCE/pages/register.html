@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐĂNG KÝ</title>
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+    <form action="" onsubmit="register(event)">
+       <div class="register-box">
+            <h2 class="title">Sign Up</h2>
+            <div style="display:none; text-align: center; margin-bottom: 15px; color: #24A600;" id="signUpSuccess">Sign Up Successfully</div>
+
+            <input type="text" id="input-name" placeholder="email here ...">
+            <p style=" display: none;" id="checkEmail"></p>
+            
+            <input type="password" id="input-password" placeholder="Password here ...">
+            <p class="error-text" id="checkPassword" style="display:none;"></p>
+
+            <input type="password" id="confirm-password" placeholder="Confirm password here ...">
+            <p class="error-text" id="checkConfirm" style="display:none;"></p>
+            <button class="btn">Sign Up</button>
+            <p>You have account?  <a href="../pages/login.html" class="link">Sign In</a></p>
+       </div>
+
+    </form>
+
+    <script src="../js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../assets/image 9.png');
+    background-size: cover;
+}
+/* form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f6f9; 
+    margin: 0;
+} */
+p{
+    padding: 0 5px 10px;
+    text-align: center;
+    color:red
+}
+.register-box {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+}
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #111;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 5px;
+    border: 1px solid #d1d5db; 
+    border-radius: 6px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.btn{
+    width: 100%;
+    padding: 14px;
+    background-color:#16A34A; 
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 20px; 
+    transition: background-color 0.2s ease;
+}
+.register-box p {
+    text-align: center;
+    margin: 0;
+    font-size: 15px;
+    color: #111;
+}
+
+.link {
+    color: #5542f6;
+    text-decoration: none;
+}
+.link:hover {
+    text-decoration: underline;
+}
+.error {
+    border: 2px solid red;
+}
+.error::placeholder{
+    color: red;
+}
+.error-text {
+    color: red;
+    padding: 0 5px 10px;
+    display: none;
+}

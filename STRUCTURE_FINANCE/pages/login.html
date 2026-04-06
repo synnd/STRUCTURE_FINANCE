@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+   <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <form action="" id="loginForm" onsubmit="logIn(event)">
+        <div class="login-box">
+            <div class="title">🔐 Sign In</div>
+            <div style="display:none; text-align: center; margin-bottom: 15px; color: #24A600;" id="signSuccess">Sign In Successfully</div>
+            
+            <div class="input-group">
+                <input type="text" class="input-name" id="inputName" placeholder="Email here ...">
+                <p class="error-text" id="checkEmail"></p>
+            </div>
+
+            <div class="input-group">
+                <input type="password" class="input-password" id="inputPassword" placeholder="Password here ...">
+                <p class="error-text" id="checkPassword"></p>
+            </div>
+
+            <p class="error-text" id="check" style="text-align: center; margin-bottom: 15px;">Sai tài khoản hoặc mật khẩu</p>
+            
+            <button class="btn" id="btn">Sign In</button>
+            
+            <p class="register-link-text">Don’t have account? <a href="../pages/register.html" class="link">Sign Up Now</a></p>
+        </div>
+    </form>
+    
+    <script src="../js/login.js"></script>
+</body>
+</html>
