@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tài Chính Cá Nhân</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <span>📒</span> Tài Chính Cá Nhân VND
+            
+        </div>
+            <button class="logout-btn" onclick="logOut()">Đăng xuất</button>
+    </nav>
+
+    <div class="logout" id="logout">
+        <div class="modal-box">
+            <h2 class="modal-title">Xác nhận</h2>
+            <p class="modal-message">Bạn có chắc chắn muốn đăng xuất khỏi tài khoản này không?</p>
+            
+            <hr class="modal-divider">
+            
+            <div class="modal-actions">
+                <button class="btn btn-cancel-logout" onclick="cancelLogout()">Hủy</button>
+                <button class="btn btn-delete-logout" onclick="deleteLogout()">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+     
+   <main class="container layout-wrapper">
+        <aside class="sidebar">
+                        <button class="menu-btn active" data-target="tab-info">
+                            <span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 5H11V7H9V5ZM9 9H11V15H9V9ZM10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="black"/>
+            </svg>
+            </span> Information
+                        </button>
+                        <button class="menu-btn" data-target="tab-category">
+                            <span><svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: black;">
+            <path d="M9 0L3.5 9H14.5L9 0ZM9 3.84L10.93 7H7.06L9 3.84ZM14.5 11C12.01 11 10 13.01 10 15.5C10 17.99 12.01 20 14.5 20C16.99 20 19 17.99 19 15.5C19 13.01 16.99 11 14.5 11ZM14.5 18C13.12 18 12 16.88 12 15.5C12 14.12 13.12 13 14.5 13C15.88 13 17 14.12 17 15.5C17 16.88 15.88 18 14.5 18ZM0 19.5H8V11.5H0V19.5ZM2 13.5H6V17.5H2V13.5Z" fill="white"/>
+            </svg>
+            </span> Category
+                        </button>
+                        <button class="menu-btn" data-target="tab-history">
+                            <span><svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5714 0C7.36476 0 3.14286 4.25389 3.14286 9.5H0L4.07524 13.6061L4.14857 13.7539L8.38095 9.5H5.2381C5.2381 5.415 8.51714 2.11111 12.5714 2.11111C16.6257 2.11111 19.9048 5.415 19.9048 9.5C19.9048 13.585 16.6257 16.8889 12.5714 16.8889C10.5495 16.8889 8.71619 16.055 7.39619 14.7144L5.90857 16.2133C7.61619 17.9339 9.96286 19 12.5714 19C17.7781 19 22 14.7461 22 9.5C22 4.25389 17.7781 0 12.5714 0ZM11.5238 5.27778V10.5556L15.9762 13.2156L16.7829 11.8644L13.0952 9.65833V5.27778H11.5238Z" fill="black"/>
+            </svg>
+            </span> History
+                        </button>
+        </aside>
+
+        <div class="main-content">
+            <div class="hero-banner" id="hero-banner">
+                <h2>🎯 Kiểm soát chi tiêu thông minh</h2>
+                <p class="hero-subtitle">Theo dõi ngân sách và thu chi hàng tháng dễ dàng</p>
+            </div>
+
+            <h1 class="page-title">📊 Quản Lý Tài Chính Cá Nhân</h1>
+
+            <div class="card card-center">
+                <div class="remaining-text">Số tiền còn lại</div>
+                <div class="amount-green" id="remainingAmount"></div>
+            </div>
+
+            <div class="card card-center">
+                <label class="input-label">📅 Chọn tháng:</label>
+                <input type="month" name="" id="month-input" class="month-input">
+                <p id="checkMonth" style="display: none; color:red; padding: 5px; margin: auto;">Hãy nhập tháng</p>
+            </div>
+
+            <div id="tab-info" class="tab-content active-tab">
+                <div class="card card-center">
+                    <label class="input-label">💰 Ngân sách tháng:</label>
+                    <input type="text" placeholder="VD: 5000000" class="budget-input">
+                    <p id="checkBudget" style="display: none; color:red; padding: 5px; margin: auto;">Hãy nhập Ngân sách tháng!</p>
+                    <button class="btn-save" onclick="btnSaveBudget()">Lưu</button>
+                </div>
+                
+               <div class="card">
+                    <h3 class="card-title text-center" style="color: #5542f6;">Quản Lý Thông tin cá nhân</h3>
+                
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+                        <div style="flex: 1;">
+                            <label>Name *</label>
+                            <input type="text" class="form-input" id="infoName" readonly>
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Email *</label>
+                            <input type="text" class="form-input" id="infoEmail" readonly>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+                        <div style="flex: 1;">
+                            <label>Phone *</label>
+                            <input type="text" class="form-input" id="infoPhone" readonly>
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Gender *</label>
+                            <input type="text" class="form-input" id="infoGender" readonly>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn-outline" style="flex: 1;" onclick="changeInfomation()">Change Information</button>
+                        <button class="btn-outline" style="flex: 1;">Change Password</button>
+                        </div>
+                </div>
+            </div>
+
+            <div class="modal-overlay" id="modal-overlay">
+                <div class="modal-container" id="modal-container">
+                    <div class="modal-header">
+                        <h2>Change Information</h2>
+                        <button class="close-btn" onclick="closeInformation()">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name <span class="required">*</span></label>
+                            <input type="text" value="" id="nameInfor">
+                            <p class="error-text" id="checkName"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" value="" id=emailInfor>
+                            <p class="error-text" id="checkEmail"></p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone <span class="required">*</span></label>
+                            <input type="text" value="" id="phoneInfor">
+                            <p class="error-text" id="checkPhone"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender <span class="required">*</span></label>
+                            <div class="select-wrapper">
+                                <select id ="genderInfor">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-cancel" onclick="closeInformation()">Cancel</button>
+                        <button class="btn btn-save" onclick="saveChangeInformation()">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-category" class="tab-content">
+                <div class="card">
+                    <h3 class="card-title" id="cardTitle">💼 Quản lý danh mục (theo tháng)</h3>        
+                    <form class="transaction-form" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <!-- <input type="text" placeholder="Tên danh mục" class="form-input" id="inputName"> -->
+                        <select name=""  class="form-input" id="inputName">
+                          
+                        </select>
+                        <input type="text" placeholder="Giới hạn" class="form-input" id="inputLimit">
+                        <button type="button" class="btn-primary" id="btn-primary">Thêm danh mục</button>
+                    </form>
+                    
+                    <ul class="transaction-list" id="listCategories">
+                      <li class="card2">
+                        <div class="icon-box">
+                            $
+                        </div>
+
+                        <div class="info">
+                            <div class="title">Tiền tích lũy</div>
+                            <div class="amount">2.000 $</div>
+                        </div>
+
+                        <div class="actions">
+                            <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            
+                            <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                        </div>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Nút xóa -->
+             <div class="btn-del" id="confirmDeletion" style="display: none;">
+                    <div class="modal-box">
+                        <img src="../assets/image 2.png" alt="" class="imgDelete" width="62px" height="60px">
+                        <h2 class="modal-title">Xác nhận</h2>
+                        <p class="modal-desc">Bạn có chắc chắn muốn xóa danh mục này khỏi hệ thống không?</p>
+                        
+                        <div class="divider"></div>
+                        
+                        <div class="modal-actions">
+                            <button id="cancelBtn" class="btn-cancel" onclick="cancelDelete()">Hủy</button>
+                            <button id="confirmDeleteBtn" class="btn-delete-confirm" onclick="deleteCategory()">Xóa</button>
+                        </div>
+                    </div>
+                    
+             </div>
+
+
+            
+
+            <div id="tab-history" class="tab-content">
+                    <div class="card">
+                        <form class="transaction-form" style="display: flex; gap: 10px;">
+                           <div>
+                             <input type="text" placeholder="Số tiền" id="inputSpendingMoney" class="spending-money form-input" style="flex:1;">
+                            <p id="transactionAlert"></p>
+                           </div>
+                            <select name="" id="spendingMoney" class="spending-money form-input" style="flex:1;">
+                                  
+                            </select>
+                            <input type="text" placeholder="Ghi chú" id="inputNote" class="spending-money form-input" style="flex:1;">
+                            <button type="button" class="btn-primary2" style="padding: 10px 20px;" onclick=" addTransaction()">Thêm</button>
+                        </form>
+                    </div>
+            
+                    <div class="card">
+                        <div class="historyControls">
+                            <h3 class="card-title text-red"><span>🧾</span> Lịch sử giao dịch</h3>
+                        
+                            <div class="history-controls" style="display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 15px;">
+                                <select class="sort-select form-input" id="sortSelect" style="width: auto;">
+                                    <option value="">Sắp xếp theo giá</option>
+                                    <option value="increasing">Tăng dần</option>
+                                    <option value="decreasing">Gỉam dần</option>
+                                </select>
+                                <input type="text" placeholder="tìm nội dung" class="search-input form-input" style="width: 200px;" id="searchInput" >
+                                <button class="btn-search btn-primary" onclick="searchTransactions()"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.1998 15.1998L11.9998 11.9998M11.9998 6.3998C11.9998 7.88502 11.4098 9.3094 10.3596 10.3596C9.3094 11.4098 7.88502 11.9998 6.3998 11.9998C4.91459 11.9998 3.49021 11.4098 2.44001 10.3596C1.3898 9.3094 0.799805 7.88502 0.799805 6.3998C0.799805 4.91459 1.3898 3.49021 2.44001 2.44001C3.49021 1.3898 4.91459 0.799805 6.3998 0.799805C7.88502 0.799805 9.3094 1.3898 10.3596 2.44001C11.4098 3.49021 11.9998 4.91459 11.9998 6.3998Z" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                                </button>
+                            </div>
+                        </div>
+                   
+                        <div class="card" id="cardTable">
+                            <table class="custom-table" id="tableHistory">
+                                <thead id="tableHead">
+                        
+                                </thead>
+                                <tbody id="tableBody">
+                                
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="notFound" style="display:none;">Không tìm thấy danh mục</div>   
+
+                </div> 
+                <div class="pagination-container">
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="transactionsLimitContainer">
+           
+        </div>
+         <div class="btn-del" id="confirmDeletionTransaction" style="display: none;">
+                    <div class="modal-box">
+                        <img src="../assets/image 2.png" alt="" class="imgDelete" width="62px" height="60px">
+                        <h2 class="modal-title">Xác nhận</h2>
+                        <p class="modal-desc">Bạn có chắc chắn muốn xóa giao dịch này khỏi hệ thống không?</p>
+                        
+                        <div class="divider"></div>
+                        
+                        <div class="modal-actions">
+                            <button id="cancelBtn" class="btn-cancel" onclick="cancelDeleteTransaction()">Hủy</button>
+                            <button id="confirmDeleteBtn" class="btn-delete-confirm" onclick="deleteTransaction()">Xóa</button>
+                        </div>
+                    </div>
+                    
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Quản Lý Tài Chính Cá Nhân.
+    </footer>
+    <script src="../js/index.js"></script>
+</body>
+</html>
